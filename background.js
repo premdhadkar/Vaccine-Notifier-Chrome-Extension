@@ -1,6 +1,6 @@
-let initialseconds = 60;
+let initialseconds = 29;
 let seconds = initialseconds;
-let secondinterval = 30;
+let secondinterval = 10;
 let interval = (secondinterval)/60;
 
 chrome.notifications.onClicked.addListener(()=>{
@@ -53,17 +53,19 @@ chrome.alarms.onAlarm.addListener((alarm)=>{
                                                 if (seconds < initialseconds) {
                                                     return;
                                                 }
-                                                seconds = 0;
-                                                chrome.notifications.create("sendNotif",{
-                                                    title: 'Get Vaccinated Now',
-                                                    message: 'Your Preferred slots are available, Click HERE!',
-                                                    iconUrl: 'icon128.png',
-                                                    type: 'image',
-                                                    isClickable: true,
-                                                    imageUrl: 'icon128.png'
-                                                },(id)=>{
-                                                    console.log(id);
-                                                });
+                                                else{
+                                                    seconds = 0;
+                                                    chrome.notifications.create("sendNotif",{
+                                                        title: 'Get Vaccinated Now',
+                                                        message: 'Your Preferred slots are available, Click HERE!',
+                                                        iconUrl: 'icon128.png',
+                                                        type: 'image',
+                                                        isClickable: true,
+                                                        imageUrl: 'icon128.png'
+                                                    },(id)=>{
+                                                        console.log(id);
+                                                    });
+                                                }
                                             }
                                         }
                                     }
@@ -74,6 +76,7 @@ chrome.alarms.onAlarm.addListener((alarm)=>{
                     .catch(err=>{
                         console.log(err);
                     });
+
             });
         }
     })
