@@ -1,6 +1,6 @@
-let initialseconds = 29;
+let initialseconds = 49;
 let seconds = initialseconds;
-let secondinterval = 10;
+let secondinterval = 20;
 let interval = (secondinterval)/60;
 
 chrome.notifications.onClicked.addListener(()=>{
