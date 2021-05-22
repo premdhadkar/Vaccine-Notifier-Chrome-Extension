@@ -3,8 +3,9 @@ let seconds = initialseconds;
 let secondinterval = 20;
 let interval = (secondinterval)/60;
 
-chrome.notifications.onClicked.addListener(()=>{
-    window.open("https://selfregistration.cowin.gov.in/",'_blank')
+chrome.notifications.onClicked.addListener((id)=>{
+    if(id=="sendNotif")
+        window.open("https://selfregistration.cowin.gov.in/",'_blank');
 });
 
 chrome.runtime.onInstalled.addListener(reason=>{
@@ -53,7 +54,7 @@ chrome.alarms.onAlarm.addListener((alarm)=>{
                                                 if (seconds < initialseconds) {
                                                     return;
                                                 }
-                                                else{
+						 else{
                                                     seconds = 0;
                                                     chrome.notifications.create("sendNotif",{
                                                         title: 'Get Vaccinated Now',
@@ -62,7 +63,8 @@ chrome.alarms.onAlarm.addListener((alarm)=>{
                                                         type: 'image',
                                                         isClickable: true,
                                                         imageUrl: 'icon128.png'
-                                                    },(id)=>{
+                                                    },(id) =>{
+                                                        ntt = new Audio('ntt.mp3').play();
                                                         console.log(id);
                                                     });
                                                 }
@@ -73,10 +75,19 @@ chrome.alarms.onAlarm.addListener((alarm)=>{
                             }
                         }
                     })
-                    .catch(err=>{
-                        console.log(err);
+                    .catch(err => {
+                        chrome.notifications.create("noInternet", {
+                            title: 'No Internet',
+                            message: 'You won\'t get notification as you are not connected to internet',
+                            iconUrl: 'icon128.png',
+                            type: 'image',
+                            isClickable: false,
+                            imageUrl: 'noi.png'
+                        }, (id) => {
+                            ntt = new Audio('ntt.mp3').play();
+                            console.log(id);
+                        });
                     });
-
             });
         }
     })
