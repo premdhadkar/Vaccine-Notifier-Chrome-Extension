@@ -5,13 +5,14 @@
     <script src="jquery-3.1.0.min.js"></script>
     <script src="popup.js"></script>
 </head>
-<body style="width: 300px; height: 312px; margin :0;background: #ffa2b4">
+<body style="width: 300px; height: 363px; margin :0;background: #ffa2b4">
 <div style="height: 15px;background: #b0717e;" ></div>
 <h1 align="center">Vaccine Notifier</h1>
 <div id="form" style="margin: 10px">
     <label for="pincode">PIN: </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="number" id="pincode"><br><br>
     <label>Age Group:</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>18-44</label><input checked type="radio" name="age" id="a18" value="18">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>45+</label><input type="radio" name="age" id="a45" value="45"><br><br>
     <label for="vaccine">Vaccine: </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <select id="vaccine"> <option selected value="COVAXIN">Covaxin</option><option value="COVISHIELD">Covishield</option><option value="SPUTNIKV">Sputnik-V</option><option value="ANY">Any One</option></select><br><br>
+    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Dose 1</label><input checked type="radio" name="dose" id="d1" value="1">&nbsp;&nbsp;&nbsp;<label>Dose 2</label><input type="radio" name="dose" id="d2" value="2"><br><br>
     <button style="background-color:#04AA6D;border-color: aliceblue;color: white;text-align: center;text-decoration: none;display: block;border-radius: 5px;position: absolute;right: 15px; bottom: 25px;padding: 5px;padding-left: 10px;padding-right: 10px" type="submit" id="addService">Notify Me!</button>
     <button style="background-color: #ff0017;border-color: aliceblue;color: white;text-align: center;text-decoration: none;border-radius: 5px;position: absolute;left: 15px; bottom: 25px;padding: 5px;padding-left: 10px;padding-right: 10px" id="resetServices">Reset Existing Service</button>
     <!--<button id="temp">temp</button>-->
@@ -19,6 +20,7 @@
     <div id="pastService2"></div>
     <div id="pastService3"></div>
     <div id="pastService4"></div>
+    <div id="pastService5"></div>
     <div style="position: absolute;left: 0px;bottom: 0px">made with &#10084;&#65039; by <a href="https://www.twitter.com/prem_dhadkar" target="_blank">premdhadkar</a> from <img height="10" border="1" src="IN.png"></div>
 </div>
 </body>

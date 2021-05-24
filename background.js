@@ -29,9 +29,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse)=>{
 chrome.alarms.onAlarm.addListener((alarm)=>{
     chrome.storage.sync.get(["ServiceActive"],function (result) {
         if(result.ServiceActive === 'Y'){
-            chrome.storage.sync.get(['Pincode','Vaccine','Age'],function (result) {
+            chrome.storage.sync.get(['Pincode','Vaccine','Dose','Age'],function (result) {
                 let pincode = result.Pincode;
                 let age = result.Age;
+                let dose = result.Dose;
                 let vaccine = result.Vaccine;
                 let date = new Date()
                 let month = date.toISOString().split("-")[1];
@@ -49,12 +50,12 @@ chrome.alarms.onAlarm.addListener((alarm)=>{
                                     let sessions = center.sessions;
                                     for( j in sessions){
                                         let session = sessions[j];
-                                        if(session.available_capacity > 0 && session.min_age_limit == age){
+                                        if(session["available_capacity_dose"+dose] > 0 && session.min_age_limit == age){
                                             if(vaccine == session.vaccine || vaccine == "ANY"){
                                                 if (seconds < initialseconds) {
                                                     return;
                                                 }
-						 else{
+                                                else{
                                                     seconds = 0;
                                                     chrome.notifications.create("sendNotif",{
                                                         title: 'Get Vaccinated Now',
